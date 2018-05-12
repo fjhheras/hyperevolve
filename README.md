@@ -6,9 +6,8 @@ It is intended to use in functions that take a long time to run, so running time
 Usage
 -----
 
-.. code:: python
-
-    # We want to optimise this function
+```python
+    # We want to maximise this function
     def f_to_optimise(args):
         time.sleep(.1)  # Difficult to compute
         value = - (args['x'])**2 - 0.1*args['y']**2 + args['z']
@@ -19,6 +18,11 @@ Usage
     # We want some bounds on x and y, and we want x integer
     opt_args = {'x': {'max': 5, 'min': -5, 'int': True},
                 'y': {'max': 5, 'min': -5}}
+
+    # We will have a population of 9
     population = Population(9, args, opt_args)
+    # And at each step we will substitute the worst performing 3 for mutations of the
+    # best 3 performers.
     optimiser = EvolutionaryOptimiser(f_to_optimise, population, n_to_select=3)
-    optimiser.start()
+    optimiser.start()  # Default is 100 iterations
+```
