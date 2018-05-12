@@ -6,7 +6,7 @@ if __name__ == '__main__':
     # We want to optimise this function
     def f_to_optimise(args):
         time.sleep(.1)  # Difficult to compute
-        value = - (args["x"])**2 - 0.1*args["y"]**2 + args['z']
+        value = - (args['x'])**2 - 0.1*args['y']**2 + args['z']
         return value + 1e-3*random.normalvariate(0, 1)
     # It has 3 arguments, but we will optimise
     # on x and y. z will stay constant
